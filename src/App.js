@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useForm } from 'react-hook-form';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+function RegistrationForm(){
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data)
+  };
+
+return(
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <label>Фамилия:</label>
+        <input{...register('surname')}/>
+      </div>
+      <div>
+      <label>Имя:</label>
+      <input{...register('name')}/>
     </div>
-  );
+      <div>
+      <label>Отчество:</label>
+      <input{...register('patronymic')}/>
+    </div>
+      <div>
+      <label>Гол рождения:</label>
+      <input type={"number"} {...register('surname')}/>
+    </div>
+      <div>
+      <label>Номер телефона:</label>
+      <input type="tel" {...register('PhoneNumber')}/>
+    </div>
+      <div>
+      <label>Email:</label>
+      <input type="email" {...register('email')}/>
+    </div>
+    <button type={"submit"}>Зарегистрироваться</button>
+
+    </form>
+      );
 }
 
-export default App;
+    export default RegistrationForm;
