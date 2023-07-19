@@ -1,43 +1,23 @@
-import React from "react";
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
 
-function RegistrationForm(){
-  const { register, handleSubmit } = useForm();
+const App = () => {
+    const [count, setCount] = useState(0);
 
-  const onSubmit = (data) => {
-    console.log(data)
-  };
+    const increment = () => {
+        setCount(count + 1);
+    };
 
-return(
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label>Фамилия:</label>
-        <input{...register('surname')}/>
-      </div>
-      <div>
-      <label>Имя:</label>
-      <input{...register('name')}/>
-    </div>
-      <div>
-      <label>Отчество:</label>
-      <input{...register('patronymic')}/>
-    </div>
-      <div>
-      <label>Гол рождения:</label>
-      <input type={"number"} {...register('surname')}/>
-    </div>
-      <div>
-      <label>Номер телефона:</label>
-      <input type="tel" {...register('PhoneNumber')}/>
-    </div>
-      <div>
-      <label>Email:</label>
-      <input type="email" {...register('email')}/>
-    </div>
-    <button type={"submit"}>Зарегистрироваться</button>
+    const decrement = () => {
+        setCount(count - 1);
+    };
 
-    </form>
-      );
-}
+    return (
+        <div>
+            <p>Count: {count}</p>
+            <button onClick={increment}>+</button>
+            <button onClick={decrement}>-</button>
+        </div>
+    );
+};
 
-    export default RegistrationForm;
+export default App;
